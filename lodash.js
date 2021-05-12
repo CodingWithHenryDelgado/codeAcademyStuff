@@ -61,6 +61,15 @@ const _= {
       invertedObject[originalValue] = key;
     }
     return invertedObject;
+  },
+  findKey(object, funcboo){
+    for(let key in object){
+      let stuff = funcboo(object[key]);
+      if(stuff){ 
+        return key;
+      };
+    };
+    return undefined;
   }
 };
 
