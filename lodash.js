@@ -70,6 +70,13 @@ const _= {
       };
     };
     return undefined;
+  },
+  drop(array, number){
+    if(number == undefined){
+      number = 1;
+    }
+    const copyArray = array.splice(number);
+    return copyArray;
   }
 };
 
