@@ -72,11 +72,20 @@ const _= {
     return undefined;
   },
   drop(array, number){
-    if(number == undefined){
+    if(number === undefined){
       number = 1;
     }
-    const copyArray = array.splice(number);
+    const copyArray = array.slice(number, array.length);
     return copyArray;
+  },
+  dropWhile(array,funcboo){
+    let cb = (element, index) => {
+      return !funcboo(element, index, array);
+    };
+
+    let dropNumber = array.findIndex(cb);
+    let droppedArray = this.drop(array, dropNumber);
+    return droppedArray;
   }
 };
 
