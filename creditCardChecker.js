@@ -27,41 +27,57 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 function validateCred(array){
     let total = 0;
-    if(array.length >= 16){
-        for(let i = array.length - 2; i >= 0; i-=2){
-        let doubleIndex = array[i] * 2;
-        if(doubleIndex > 9){
-          doubleIndex -= 9;
+    // if(array.length >= 16){
+    //     for(let i = array.length - 2; i >= 0; i-=2){
+    //     let doubleIndex = array[i] * 2;
+    //     if(doubleIndex > 9){
+    //       doubleIndex -= 9;
+    //     }
+    //     total += doubleIndex;
+    //   }
+    //   for(let j = array.length - 3; j > 0; j-=2){
+    //       total += array[j];
+    //   }
+    //   total += array[15];
+    //   if(total % 10 === 0){
+    //     return 'valid';
+    //   }else{
+    //     return 'invalid';
+    //   }
+    // }else if(array.length === 15){
+    //   for(let i = array.length - 2; i > 0; i-=2){
+    //     let doubleIndex = array[i] * 2;
+    //     if(doubleIndex > 9){
+    //       doubleIndex -= 9;
+    //     }
+    //     total += doubleIndex;
+    //   }
+    //   for(let j = array.length - 3; j >= 0; j-=2){
+    //       total += array[j];
+    //   }
+    //   total += array[14];
+    //   if(total % 10 === 0){
+    //     return 'valid';
+    //   }else{
+    //     return 'invalid';
+    //   }
+    // }
+    for (let i = numArr.length - 1; i >= 0; i--) {
+        let currValue = numArr[i]
+        if ((numArr.length - 1 - i) % 2 === 1) {
+          currValue *= 2;
+          if (currValue > 9) {
+            currValue -= 9;
+          }
         }
-        total += doubleIndex;
+        total += currValue;
       }
-      for(let j = array.length - 3; j > 0; j-=2){
-          total += array[j];
-      }
-      total += array[15];
-      if(total % 10 === 0){
-        return 'valid';
-      }else{
-        return 'invalid';
-      }
-    }else if(array.length === 15){
-      for(let i = array.length - 2; i > 0; i-=2){
-        let doubleIndex = array[i] * 2;
-        if(doubleIndex > 9){
-          doubleIndex -= 9;
+    
+        if(total % 10 === 0){
+            return 'valid';
+        }else{
+            return 'invalid';
         }
-        total += doubleIndex;
-      }
-      for(let j = array.length - 3; j >= 0; j-=2){
-          total += array[j];
-      }
-      total += array[14];
-      if(total % 10 === 0){
-        return 'valid';
-      }else{
-        return 'invalid';
-      }
-    }
 };
 
 function findInvalidCards(nestedArrays){
