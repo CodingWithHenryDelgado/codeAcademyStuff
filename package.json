@@ -18,5 +18,8 @@
   "homepage": "https://github.com/HenryDelGlitch/codeAcademyStuff#readme",
   "devDependencies": {
     "mocha": "^8.4.0"
+  },
+  "dependencies": {
+    "angular": "^1.8.2"
   }
 }
