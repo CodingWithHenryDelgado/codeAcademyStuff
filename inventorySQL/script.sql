@@ -31,7 +31,7 @@ ALTER TABLE parts
 ADD PRIMARY KEY (id);
 
 ALTER TABLE reorder_options
-ADD FOREIGN KEY (reorder_options_id) 
+ADD FOREIGN KEY (part_id) 
 REFERENCES parts (id);
 
 ALTER TABLE locations
@@ -41,16 +41,15 @@ ALTER TABLE locations
 ADD UNIQUE (part_id, location);
 
 ALTER TABLE locations
-ADD FOREIGN KEY (location_id) 
-REFERENCES parts (id);
+ADD FOREIGN KEY (qty) REFERENCES parts (id);
 
-ALTER TABLE manufacturers
+ALTER TABLE parts
 ADD FOREIGN KEY (manufacturer_id) 
-REFERENCES parts (id);
+REFERENCES manufacturers (id);
 
 INSERT INTO manufacturers (id, name)
 VALUES (11, 'Pip-NNC Industrial');
 
 UPDATE parts
 SET manufacturer_id = 11
-WHERE manufacturer_id IN (, );
+WHERE manufacturer_id IN (id, id);
